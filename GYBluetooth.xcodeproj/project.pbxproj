@@ -14,6 +14,7 @@
 		B719E41A1E767E6400989728 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B719E4181E767E6400989728 /* LaunchScreen.storyboard */; };
 		B719E4251E767E6400989728 /* GYBluetoothTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B719E4241E767E6400989728 /* GYBluetoothTests.swift */; };
 		B719E4301E767E6400989728 /* GYBluetoothUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B719E42F1E767E6400989728 /* GYBluetoothUITests.swift */; };
+		B719E4401E76850400989728 /* GYBluetoothConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = B719E43F1E76850400989728 /* GYBluetoothConst.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		B719E42B1E767E6400989728 /* GYBluetoothUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GYBluetoothUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B719E42F1E767E6400989728 /* GYBluetoothUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYBluetoothUITests.swift; sourceTree = "<group>"; };
 		B719E4311E767E6400989728 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B719E43F1E76850400989728 /* GYBluetoothConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYBluetoothConst.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		B719E40E1E767E6400989728 /* GYBluetooth */ = {
 			isa = PBXGroup;
 			children = (
+				B719E43D1E76848300989728 /* GYBluetooth */,
 				B719E40F1E767E6400989728 /* AppDelegate.swift */,
 				B719E4111E767E6400989728 /* ViewController.swift */,
 				B719E4131E767E6400989728 /* Main.storyboard */,
@@ -123,6 +126,14 @@
 				B719E4311E767E6400989728 /* Info.plist */,
 			);
 			path = GYBluetoothUITests;
+			sourceTree = "<group>";
+		};
+		B719E43D1E76848300989728 /* GYBluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				B719E43F1E76850400989728 /* GYBluetoothConst.swift */,
+			);
+			path = GYBluetooth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +275,7 @@
 			files = (
 				B719E4121E767E6400989728 /* ViewController.swift in Sources */,
 				B719E4101E767E6400989728 /* AppDelegate.swift in Sources */,
+				B719E4401E76850400989728 /* GYBluetoothConst.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +427,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = UZZG6NM74T;
 				INFOPLIST_FILE = GYBluetooth/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Ozner.GYBluetooth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -428,6 +441,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = UZZG6NM74T;
 				INFOPLIST_FILE = GYBluetooth/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Ozner.GYBluetooth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -512,6 +526,7 @@
 				B719E4361E767E6400989728 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B719E4371E767E6400989728 /* Build configuration list for PBXNativeTarget "GYBluetoothTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +535,7 @@
 				B719E4391E767E6400989728 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B719E43A1E767E6400989728 /* Build configuration list for PBXNativeTarget "GYBluetoothUITests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +544,7 @@
 				B719E43C1E767E6400989728 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

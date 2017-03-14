@@ -95,6 +95,11 @@ extension GYCBCentralManager: CBCentralManagerDelegate {
     
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral){
         Print("设备已连接:\(peripheral.name)")
+        //设置 CBPeripheralDelegate
+        peripheral.delegate = self
+        let seriveUUID = CBUUID(string: "FFF0")
+        
+        peripheral.discoverServices([seriveUUID])
         
     }
     
@@ -106,4 +111,124 @@ extension GYCBCentralManager: CBCentralManagerDelegate {
         Print("未连接:\(error)")
     }
     
+}
+
+extension GYCBCentralManager: CBPeripheralDelegate {
+    
+    public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+        
+        Print("didDiscoverServices")
+        
+        let services = peripheral.services
+        
+        if (services != nil) {
+            let service = services![0] as CBService
+            
+            let writeUUID = CBUUID(string: "FFF1")
+//            let notifyUUID = CBUUID(string: "FFF5")
+//            _ = CBUUID(string: "FFF6")
+            peripheral.discoverCharacteristics([writeUUID], for:service)
+        }
+        
+    }
+    
+    
+    
+    /// 发现特性值
+    ///
+    /// - Parameters:
+    ///   - peripheral: peripheral description
+    ///   - service: service description
+    ///   - error: error description
+    public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+        
+        if error == nil {
+            
+            Print("didDiscoverCharacteristicsFor")
+            let characteristicArray = service.characteristics
+            
+            if (characteristicArray?.count)! == 1 {
+                
+//                peripheral.setNotifyValue(true, for: (characteristicArray?[1])!)
+                
+//                peripheral.writeValue(Data(), for: (characteristicArray?[0])!, type: CBCharacteristicWriteType.withResponse)
+                peripheral.readValue(for: (characteristicArray?[0])!)
+            }
+            
+        } else {
+            Print("didDiscoverCharacteristicsFor error:\(error)")
+        }
+    }
+    
+    
+    /// 写入成功
+    ///
+    /// - Parameters:
+    ///   - peripheral: peripheral description
+    ///   - characteristic: characteristic description
+    ///   - error: error description
+    public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
+        
+        if !(error != nil) {
+            Print("Write Success")
+        } else {
+            Print("didWriteValueFor:\(error)")
+        }
+        
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+        
+        
+        if !(error != nil) {
+          Print("读取成功")
+        } else {
+            
+            Print("读取失败\(error)")
+        }
+        
+    }
+    
+    
+    /// 外设回复
+    ///
+    /// - Parameters:
+    ///   - peripheral: peripheral description
+    ///   - characteristic: characteristic description
+    ///   - error: error description
+    public func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
+        
+        if !(error != nil) {
+            Print("didUpdateNotificationStateFor")
+        } else {
+            Print("didUpdateNotificationStateError:\(error)")
+        }
+        
+    }
+    
+    public func peripheralDidUpdateName(_ peripheral: CBPeripheral){
+        
+    }
+    
+    public func peripheral(_ peripheral: CBPeripheral, didModifyServices invalidatedServices: [CBService]) {
+        
+        Print("didModifyServices")
+        
+    }
+    
+    public func peripheralDidUpdateRSSI(_ peripheral: CBPeripheral, error: Error?){
+        
+        Print("peripheralDidUpdateRSSI")
+        
+    }
+    
+    public func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
+        Print("didReadRSSI")
+    }
+    
+
+    
+    public func peripheral(_ peripheral: CBPeripheral, didDiscoverIncludedServicesFor service: CBService, error: Error?) {
+        Print("didDiscoverIncludedServicesFor")
+    }
 }

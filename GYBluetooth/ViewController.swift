@@ -13,6 +13,7 @@ import CoreBluetooth
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var textView: UITextView!
     
     /// 解决 XPC connection invalid
     var manager: CBCentralManager!
@@ -48,11 +49,11 @@ class ViewController: UIViewController {
         guard manager.state.rawValue == 5 else {
             return
         }
-        
-       
-        
-
       
+    }
+    
+    private func writeToLogWithText(_ string: String) {
+        
     }
 
     override func didReceiveMemoryWarning() {

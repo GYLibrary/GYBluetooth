@@ -41,8 +41,8 @@ class GYCBCentralManager :NSObject {
     
     public func scanPeripherals() {
         
-//        centralManager.scanForPeripherals(withServices: nil, options: nil)
-        centralManager.scanForPeripherals(withServices:[CBUUID(string:"FFF0")], options: nil)
+        centralManager.scanForPeripherals(withServices: nil, options: nil)
+//        centralManager.scanForPeripherals(withServices:[CBUUID(string:"FFF0")], options: nil)
 
         
     }
@@ -83,7 +83,7 @@ extension GYCBCentralManager: CBCentralManagerDelegate {
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber){
         Print("已扫描到的设备:\(peripheral.name),uuid:\(peripheral.identifier),RSSI:\(RSSI)")
         
-        if peripheral.name == "Ozner Cup" && !peripheralsArr.contains(peripheral) {
+        if peripheral.name == "BKExample" && !peripheralsArr.contains(peripheral) {
             peripheralsArr.append(peripheral)
             centralManager.connect(peripheral, options: nil)
             
@@ -160,7 +160,6 @@ extension GYCBCentralManager: CBPeripheralDelegate {
         }
     }
     
-    
     /// 写入成功
     ///
     /// - Parameters:
@@ -188,7 +187,6 @@ extension GYCBCentralManager: CBPeripheralDelegate {
         }
         
     }
-    
     
     /// 外设回复
     ///
@@ -225,8 +223,6 @@ extension GYCBCentralManager: CBPeripheralDelegate {
     public func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
         Print("didReadRSSI")
     }
-    
-
     
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverIncludedServicesFor service: CBService, error: Error?) {
         Print("didDiscoverIncludedServicesFor")

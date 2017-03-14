@@ -15,6 +15,8 @@
 		B719E4251E767E6400989728 /* GYBluetoothTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B719E4241E767E6400989728 /* GYBluetoothTests.swift */; };
 		B719E4301E767E6400989728 /* GYBluetoothUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B719E42F1E767E6400989728 /* GYBluetoothUITests.swift */; };
 		B719E4401E76850400989728 /* GYBluetoothConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = B719E43F1E76850400989728 /* GYBluetoothConst.swift */; };
+		B719E44F1E76BA1400989728 /* GYCBCentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B719E44E1E76BA1400989728 /* GYCBCentralManager.swift */; };
+		B719E4571E76C83000989728 /* GYCBCentralManagerDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B719E4561E76C83000989728 /* GYCBCentralManagerDelegateProxy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		B719E42F1E767E6400989728 /* GYBluetoothUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYBluetoothUITests.swift; sourceTree = "<group>"; };
 		B719E4311E767E6400989728 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B719E43F1E76850400989728 /* GYBluetoothConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYBluetoothConst.swift; sourceTree = "<group>"; };
+		B719E44E1E76BA1400989728 /* GYCBCentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCBCentralManager.swift; sourceTree = "<group>"; };
+		B719E4561E76C83000989728 /* GYCBCentralManagerDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCBCentralManagerDelegateProxy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				B719E43F1E76850400989728 /* GYBluetoothConst.swift */,
+				B719E44E1E76BA1400989728 /* GYCBCentralManager.swift */,
+				B719E4561E76C83000989728 /* GYCBCentralManagerDelegateProxy.swift */,
 			);
 			path = GYBluetooth;
 			sourceTree = "<group>";
@@ -273,8 +279,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B719E44F1E76BA1400989728 /* GYCBCentralManager.swift in Sources */,
 				B719E4121E767E6400989728 /* ViewController.swift in Sources */,
 				B719E4101E767E6400989728 /* AppDelegate.swift in Sources */,
+				B719E4571E76C83000989728 /* GYCBCentralManagerDelegateProxy.swift in Sources */,
 				B719E4401E76850400989728 /* GYBluetoothConst.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,6 +9,28 @@
 import UIKit
 import CoreBluetooth
 
+#if true
+
+class ViewController: UIViewController {
+    
+    
+    /// 解决 XPC connection invalid
+    var manager: CBCentralManager!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let center = GYCBCentralManager.default
+     
+//        manager = center.centralManager
+//        center.scanPeripherals()
+    }
+    
+}
+#endif
+
+#if false
+
 class ViewController: UIViewController {
 
     var manager: CBCentralManager!
@@ -112,6 +134,12 @@ extension ViewController: CBCentralManagerDelegate {
         
         Print("advertisementData:\(peripheral.name)")
         
+        if peripheral.name == "OAP" {
+            manager.connect(peripheral, options: nil)
+        }
+        
+        
+        
     }
 
     /// 外设列表
@@ -155,3 +183,4 @@ extension ViewController: CBCentralManagerDelegate {
     
     
 }
+#endif

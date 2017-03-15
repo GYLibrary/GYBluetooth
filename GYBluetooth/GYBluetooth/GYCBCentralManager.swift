@@ -42,7 +42,7 @@ class GYCBCentralManager :NSObject {
     public func scanPeripherals() {
         
         centralManager.scanForPeripherals(withServices: nil, options: nil)
-//        centralManager.scanForPeripherals(withServices:[CBUUID(string:"FFF0")], options: nil)
+//        centralManager.scanForPeripherals(withServices:[CBUUID(string:"FFF0"),CBUUID(string:"FFE0")], options: nil)
 
         
     }
@@ -83,7 +83,7 @@ extension GYCBCentralManager: CBCentralManagerDelegate {
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber){
         Print("已扫描到的设备:\(peripheral.name),uuid:\(peripheral.identifier),RSSI:\(RSSI)")
         
-        if peripheral.name == "BKExample" && !peripheralsArr.contains(peripheral) {
+        if peripheral.name == "guangyang的 iPhone" && !peripheralsArr.contains(peripheral) {
             peripheralsArr.append(peripheral)
             centralManager.connect(peripheral, options: nil)
             
@@ -109,6 +109,7 @@ extension GYCBCentralManager: CBCentralManagerDelegate {
     
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?){
         Print("未连接:\(error)")
+        centralManager.connect(peripheral, options: nil)
     }
     
 }
@@ -117,11 +118,11 @@ extension GYCBCentralManager: CBPeripheralDelegate {
     
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         
-        Print("didDiscoverServices")
+        Print("didDiscoverServices\(peripheral)")
         
         let services = peripheral.services
         
-        if (services != nil) {
+        if ((services?.count)! > 0) {
             let service = services![0] as CBService
             
             let writeUUID = CBUUID(string: "FFF1")

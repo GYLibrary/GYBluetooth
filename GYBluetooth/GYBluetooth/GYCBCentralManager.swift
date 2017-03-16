@@ -45,7 +45,6 @@ class GYCBCentralManager :NSObject {
         
         centralManager.scanForPeripherals(withServices: nil, options: nil)
         
-        
 //        centralManager.scanForPeripherals(withServices:[CBUUID(string:"FFF0"),CBUUID(string:"FFE0")], options: nil)
 
         
@@ -55,6 +54,8 @@ class GYCBCentralManager :NSObject {
         
         
     }
+    
+    
     
 }
 
@@ -83,6 +84,10 @@ extension GYCBCentralManager: CBCentralManagerDelegate {
         
     }
     
+    public func respondToRequest(request: CBATTRequest!, withResult result: CBATTError)
+    {
+        
+    }
     
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber){
         Print("已扫描到的设备:\(peripheral.name),uuid:\(peripheral.identifier),RSSI:\(RSSI)")
@@ -104,7 +109,6 @@ extension GYCBCentralManager: CBCentralManagerDelegate {
 //        let seriveUUID = CBUUID(string: "6E6B5C64-FAF7-40AE-9C21-D4933AF45B23")
         
         let seriveUUID = CBUUID(nsuuid: UUID(uuidString: "6E6B5C64-FAF7-40AE-9C21-D4933AF45B23")!)
-
         peripheral.discoverServices([seriveUUID])
         
     }
@@ -124,10 +128,11 @@ extension GYCBCentralManager: CBPeripheralDelegate {
     
     public func sendData() {
         
-        let numberOfBytesToSend: Int = Int(arc4random_uniform(666) + 66)
+        let numberOfBytesToSend: Int = Int(512)
         let data = Data.dataWithNumberOfBytes(numberOfBytesToSend)
+        let str = "hello，外设"
         
-         _peripheral.writeValue(data, for: _characteristic, type: CBCharacteristicWriteType.withResponse)
+         _peripheral.writeValue(str.data(using: String.Encoding.utf8)!, for: _characteristic, type: CBCharacteristicWriteType.withResponse)
         
     }
     
@@ -147,7 +152,7 @@ extension GYCBCentralManager: CBPeripheralDelegate {
                 self.peripheral(peripheral, didDiscoverCharacteristicsFor: service, error: nil)
             } else {
 //                peripheral.discoverCharacteristics([CBUUID(string:"477A2967-1FAB-4DC5-920A-DEE5DE685A3D")], for: service)
-                peripheral.discoverCharacteristics([CBUUID(nsuuid: UUID(uuidString: "477A2967-1FAB-4DC5-920A-DEE5DE685A3D")!),CBUUID(nsuuid: UUID(uuidString: "477A2967-1FAB-4DC5-920A-DEE5DE685A3E")!)], for: service)
+                peripheral.discoverCharacteristics([CBUUID(nsuuid: UUID(uuidString: "477A2967-1FAB-4DC5-920A-DEE5DE685A3D")!)], for: service)
             }
             
         }
@@ -173,7 +178,7 @@ extension GYCBCentralManager: CBPeripheralDelegate {
         
         if error == nil {
             
-            Print("didDiscoverCharacteristicsFor")
+            Print("didDiscoverCharacteristicsFor:\(service.characteristics)")
             let characteristicArray = service.characteristics
             
             if (characteristicArray?.count)! == 1 {
@@ -186,6 +191,7 @@ extension GYCBCentralManager: CBPeripheralDelegate {
                 let data = Data.dataWithNumberOfBytes(numberOfBytesToSend)
                 
 //                peripheral.writeValue(data, for: (characteristicArray?[1])!, type: CBCharacteristicWriteType.withResponse)
+                
 //                peripheral.readValue(for: (characteristicArray?[0])!)
             }
             
@@ -201,13 +207,18 @@ extension GYCBCentralManager: CBPeripheralDelegate {
     ///   - characteristic: characteristic description
     ///   - error: error description
     public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
-        
-        
+        peripheral.setNotifyValue(true, for: characteristic)
+        Print("Write Success\(characteristic)")
         if !(error != nil) {
             Print("Write Success")
         } else {
             Print("didWriteValueFor:\(error)")
         }
+        
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didWriteValueFor descriptor: CBDescriptor, error: Error?) {
+        Print("didWriteValueFor:\(descriptor)")
         
     }
     
@@ -242,7 +253,10 @@ extension GYCBCentralManager: CBPeripheralDelegate {
         
     }
     
+    
     public func peripheralDidUpdateName(_ peripheral: CBPeripheral){
+        
+        
         
     }
     

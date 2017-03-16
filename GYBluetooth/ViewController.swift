@@ -18,13 +18,19 @@ class ViewController: UIViewController {
     /// 解决 XPC connection invalid
     var manager: CBCentralManager!
     
+    @IBAction func sendDataAction(_ sender: Any) {
+        let center = GYCBCentralManager.default
+            center.sendData()
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let center = GYCBCentralManager.default
-     
-//        manager = center.centralManager
-//        center.scanPeripherals()
+//        let numberOfBytesToSend: Int = Int(arc4random_uniform(666) + 66)
+//        let data = Data.dataWithNumberOfBytes(numberOfBytesToSend)
+
+        
     }
     
 }

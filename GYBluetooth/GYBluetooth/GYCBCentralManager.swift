@@ -109,7 +109,11 @@ extension GYCBCentralManager: CBCentralManagerDelegate {
 //        let seriveUUID = CBUUID(string: "6E6B5C64-FAF7-40AE-9C21-D4933AF45B23")
         
         let seriveUUID = CBUUID(nsuuid: UUID(uuidString: "6E6B5C64-FAF7-40AE-9C21-D4933AF45B23")!)
+        //寻找指定的UUID的Service
         peripheral.discoverServices([seriveUUID])
+        
+        //已连接 停止扫描
+        central.stopScan()
         
     }
     
@@ -128,13 +132,26 @@ extension GYCBCentralManager: CBPeripheralDelegate {
     
     public func sendData() {
         
-        let numberOfBytesToSend: Int = Int(512)
-        let data = Data.dataWithNumberOfBytes(numberOfBytesToSend)
-        let str = "hello，外设"
+//        let numberOfBytesToSend: Int = Int(512)
+//        let data = Data.dataWithNumberOfBytes(numberOfBytesToSend)
+        let str = "h"
+      
+//        var bytes:[UInt8] = [13,0xf1]
         
-         _peripheral.writeValue(str.data(using: String.Encoding.utf8)!, for: _characteristic, type: CBCharacteristicWriteType.withResponse)
+//        bytes?.append(5)
+//        let dataStr = NSData(bytes: bytes, length: 2)
+        let data:NSData = (str.data(using: String.Encoding.utf8) as? NSData)!
+        Print(data.bytes)
+        
+        
+//        let data1 = data.bytes.advanced(by: 5)
+        _peripheral.writeValue(Data(), for: _characteristic, type: CBCharacteristicWriteType.withResponse)
+//         _peripheral.writeValue(str.data(using: String.Encoding.utf8)!, for: _characteristic, type: CBCharacteristicWriteType.withResponse)
+//         _peripheral.writeValue(dataStr as Data, for: _characteristic, type: CBCharacteristicWriteType.withResponse)
         
     }
+    
+    
     
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         
@@ -168,7 +185,7 @@ extension GYCBCentralManager: CBPeripheralDelegate {
         
     }
     
-    /// 发现特性值
+    /// 发现特性值 找到指定的UUID的特征值会回调此处
     ///
     /// - Parameters:
     ///   - peripheral: peripheral description
@@ -184,7 +201,9 @@ extension GYCBCentralManager: CBPeripheralDelegate {
             if (characteristicArray?.count)! == 1 {
                 
                 //此处设置通知
+                Print(characteristicArray?[0].uuid)
                 peripheral.setNotifyValue(true, for: (characteristicArray?[0])!)
+                
                 _peripheral = peripheral
                 _characteristic = characteristicArray?[0]
                 let numberOfBytesToSend: Int = Int(arc4random_uniform(666) + 66)
@@ -200,7 +219,7 @@ extension GYCBCentralManager: CBPeripheralDelegate {
         }
     }
     
-    /// 写入成功
+    /// 是否写入成功的回调
     ///
     /// - Parameters:
     ///   - peripheral: peripheral description
@@ -208,11 +227,11 @@ extension GYCBCentralManager: CBPeripheralDelegate {
     ///   - error: error description
     public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
         peripheral.setNotifyValue(true, for: characteristic)
-        Print("Write Success\(characteristic)")
+        Print("Write：\(characteristic.value)")
         if !(error != nil) {
             Print("Write Success")
         } else {
-            Print("didWriteValueFor:\(error)")
+            Print("didWriteValueFor:\(error?.localizedDescription)")
         }
         
     }

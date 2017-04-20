@@ -111,6 +111,7 @@ extension GYCBCentralManager: CBCentralManagerDelegate {
         let seriveUUID = CBUUID(nsuuid: UUID(uuidString: "6E6B5C64-FAF7-40AE-9C21-D4933AF45B23")!)
         peripheral.discoverServices([seriveUUID])
         
+        central.stopScan()
     }
     
     public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?){

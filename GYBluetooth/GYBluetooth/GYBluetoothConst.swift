@@ -25,7 +25,7 @@ public func Print<T>(_ message: T,file: String = #file,method: String = #functio
     #endif
 }
 
-public enum GYBlutoothError:Error {
+public enum GYCBError:Error {
     case UnknownError
     
     var descrption:String {
@@ -34,6 +34,20 @@ public enum GYBlutoothError:Error {
             return "UnknowError"
         }
     }
+}
+
+
+/// CB State
+///
+/// - Open:
+/// - Closed:
+/// - Unkonwn:  
+public enum GYCBState {
+    
+    case Opened
+    case Closed
+    case Unkonwn
+    
 }
 
 class GYBluetoothConst: NSObject {

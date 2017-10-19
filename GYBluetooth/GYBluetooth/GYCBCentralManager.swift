@@ -163,6 +163,7 @@ extension GYCBCentralManager: CBPeripheralDelegate {
         let data1 = Data.init(bytes: [0x12])
         
         _peripheral.writeValue(data1, for: _characteristic, type: .withResponse)
+            
         }
         
     }

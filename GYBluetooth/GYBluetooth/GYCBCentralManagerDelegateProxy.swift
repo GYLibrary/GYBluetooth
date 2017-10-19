@@ -43,7 +43,6 @@ class GYCBCentralManagerDelegateProxy: NSObject ,CBCentralManagerDelegate{
     internal weak var stateDelegate: GYCBCentralManagerStateDelegate?
     internal weak var discoveryDelegate: GYCBCentralManagerDiscoveryDelegate?
     internal weak var connectionDelegate: GYCBCentralManagerConnectionDelegate?
-
     
     internal func centralManagerDidUpdateState(_ central: CBCentralManager) {
         stateDelegate?.centralManagerDidUpdateState(central)

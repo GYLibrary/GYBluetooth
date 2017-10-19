@@ -20,7 +20,6 @@ public enum Result<Value> {
     case Success(Value)
     case Failure(Error)
     
-    
     /// if success
     public var isSuccess:Bool {
         
@@ -65,6 +64,7 @@ extension Result:CustomStringConvertible,CustomDebugStringConvertible {
             return "FAILURE"
         }
     }
+    
     public var debugDescription: String {
         switch self {
         case .Success:

@@ -30,7 +30,6 @@ class GYCBCentralManager :NSObject {
     
     open static let `default`: GYCBCentralManager = {
         
-        
         return GYCBCentralManager(true)
     }()
     
@@ -99,8 +98,7 @@ extension GYCBCentralManager: CBCentralManagerDelegate {
     
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber){
         
-        Print("已扫描到的设备:\(String(describing: peripheral.name)),uuid:\(peripheral.identifier),RSSI:\(RSSI),TYPE")
-        
+        Print("已扫描到的设备:\(String(describing: peripheral.name)),uuid:\(peripheral.identifier),RSSI:\(RSSI),TYPE:(per)")
         
         if peripheral.name == "RO Comml" && !peripheralsArr.contains(peripheral) {
             peripheralsArr.append(peripheral)

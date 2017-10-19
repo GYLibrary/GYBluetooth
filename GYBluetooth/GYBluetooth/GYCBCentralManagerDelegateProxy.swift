@@ -50,6 +50,7 @@ class GYCBCentralManagerDelegateProxy: NSObject ,CBCentralManagerDelegate{
     }
     
     internal func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        
         discoveryDelegate?.centralManager(central, didDiscover: peripheral, advertisementData: advertisementData, rssi: RSSI)
     }
     

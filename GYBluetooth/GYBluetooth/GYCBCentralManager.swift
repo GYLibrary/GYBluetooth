@@ -40,7 +40,7 @@ class GYCBCentralManager :NSObject {
         peripheralsArr.removeAll()
     }
     
-    public func scanPeripherals() {
+    @objc public func scanPeripherals() {
         
 //        centralManager.scanForPeripherals(withServices: nil, options: nil)
         
@@ -146,7 +146,7 @@ extension GYCBCentralManager: CBCentralManagerDelegate {
 
 extension GYCBCentralManager: CBPeripheralDelegate {
     
-    func sendCup() {
+    @objc func sendCup() {
         
         while true {
         

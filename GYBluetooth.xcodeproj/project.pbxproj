@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6837AD3B1F9840F900AEA5D9 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6837AD3A1F9840F900AEA5D9 /* Result.swift */; };
 		B719E4101E767E6400989728 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B719E40F1E767E6400989728 /* AppDelegate.swift */; };
 		B719E4121E767E6400989728 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B719E4111E767E6400989728 /* ViewController.swift */; };
 		B719E4151E767E6400989728 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B719E4131E767E6400989728 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6837AD3A1F9840F900AEA5D9 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		B719E40C1E767E6400989728 /* GYBluetooth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GYBluetooth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B719E40F1E767E6400989728 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B719E4111E767E6400989728 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				B719E43F1E76850400989728 /* GYBluetoothConst.swift */,
 				B719E44E1E76BA1400989728 /* GYCBCentralManager.swift */,
 				B719E4561E76C83000989728 /* GYCBCentralManagerDelegateProxy.swift */,
+				6837AD3A1F9840F900AEA5D9 /* Result.swift */,
 			);
 			path = GYBluetooth;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				B719E44F1E76BA1400989728 /* GYCBCentralManager.swift in Sources */,
 				B719E4121E767E6400989728 /* ViewController.swift in Sources */,
 				B719E4101E767E6400989728 /* AppDelegate.swift in Sources */,
+				6837AD3B1F9840F900AEA5D9 /* Result.swift in Sources */,
 				B719E4571E76C83000989728 /* GYCBCentralManagerDelegateProxy.swift in Sources */,
 				B719E4401E76850400989728 /* GYBluetoothConst.swift in Sources */,
 			);

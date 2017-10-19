@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let center = GYCBCentralManager.default
+        let _ = GYCBCentralManager.default
 //        let numberOfBytesToSend: Int = Int(arc4random_uniform(666) + 66)
 //        let data = Data.dataWithNumberOfBytes(numberOfBytesToSend)
 

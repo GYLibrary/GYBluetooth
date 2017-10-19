@@ -25,6 +25,16 @@ public func Print<T>(_ message: T,file: String = #file,method: String = #functio
     #endif
 }
 
+public enum GYBlutoothError:Error {
+    case UnknownError
+    
+    var descrption:String {
+        switch self {
+        case .UnknownError:
+            return "UnknowError"
+        }
+    }
+}
 
 class GYBluetoothConst: NSObject {
 

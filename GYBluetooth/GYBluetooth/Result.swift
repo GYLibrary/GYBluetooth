@@ -70,7 +70,7 @@ extension Result:CustomStringConvertible,CustomDebugStringConvertible {
         case .Success:
             return "SUCCESS: \(String(describing: value))"
         case .Failure:
-            return "FAILURE: \(error ?? GYBlutoothError.UnknownError)"
+            return "FAILURE: \(error ?? GYCBError.UnknownError)"
         }
     }
     

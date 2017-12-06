@@ -87,6 +87,7 @@ extension GYCBCentralManager: CBCentralManagerDelegate {
             let scanthread = Thread.init(target: self, selector: #selector(GYCBCentralManager.scanPeripherals), object: nil)
             scanthread.start()
             
+            
         }
         
     }
@@ -97,8 +98,12 @@ extension GYCBCentralManager: CBCentralManagerDelegate {
     }
     
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber){
-        
-        Print("已扫描到的设备:\(String(describing: peripheral.name)),uuid:\(peripheral.identifier),RSSI:\(RSSI),TYPE:(per)")
+//        key    String    "kCBAdvDataLocalName"
+//        key    String    "kCBAdvDataServiceData"
+//        print((advertisementData["kCBAdvDataLocalName"] as! [String:Data]) ["kCBAdvDataServiceData"])
+//        print(advertisementData["kCBAdvDataServiceData"])
+        Print(CBAdvertisementDataManufacturerDataKey)
+        Print("已扫描到的设备:\(String(describing: peripheral.name)),uuid:\(peripheral.identifier),RSSI:\(RSSI),TYPE:(peri)")
         
         if peripheral.name == "RO Comml" && !peripheralsArr.contains(peripheral) {
             peripheralsArr.append(peripheral)
@@ -123,7 +128,7 @@ extension GYCBCentralManager: CBCentralManagerDelegate {
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral){
         Print("设备已连接:\(String(describing: peripheral.name))")
         //设置 CBPeripheralDelegate
-        
+//        peripheral.delegate = self
 //        let seriveUUID = CBUUID(string: "6E6B5C64-FAF7-40AE-9C21-D4933AF45B23")
         
 //        let seriveUUID = CBUUID(string: "FFF0")
@@ -219,6 +224,8 @@ extension GYCBCentralManager: CBPeripheralDelegate {
 //        }
         
     }
+    
+    
     
     /// 发现特性值
     ///
@@ -406,7 +413,7 @@ extension GYCBCentralManager: CBPeripheralDelegate {
     
     public func peripheralDidUpdateName(_ peripheral: CBPeripheral){
         
-        
+        print(peripheral.name)
         
     }
     

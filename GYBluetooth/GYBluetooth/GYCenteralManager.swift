@@ -40,8 +40,7 @@ class GYCenteralManager: NSObject {
 
 extension GYCenteralManager: GYCBCentralManagerStateDelegate,GYCBCentralManagerDiscoveryDelegate,GYCBCentralManagerConnectionDelegate {
     
-    func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        
+    fileprivate func extractedFunc(_ central: CBCentralManager) {
         switch central.state {
         case .unknown,.resetting:
             state = GYCBState.Unkonwn
@@ -53,10 +52,11 @@ extension GYCenteralManager: GYCBCentralManagerStateDelegate,GYCBCentralManagerD
             //do SomeThing
             state = GYCBState.Opened
         }
-        
     }
     
-    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        
+        extractedFunc(central)
         
     }
     
@@ -69,6 +69,10 @@ extension GYCenteralManager: GYCBCentralManagerStateDelegate,GYCBCentralManagerD
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        
+    }
+    
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         
     }
     
